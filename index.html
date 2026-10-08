@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <meta name="description" content="Agenda diaria de asignación de SSDD con capacity por zona, agencia y especialidad PEXT / HAB.">
-  <title>Agenda Capacity 360 Pro | Planificación inteligente</title>
+  <title>Agenda Capacity 360 Pro | Asignación visual SSDD</title>
   <style>
     :root{color-scheme:light;--ink:#12253c;--muted:#63748b;--line:#e2e9f1;--soft:#f2f6fa;--surface:#fff;--side:#101d32;--accent:#077e89;--accent2:#19a4a5;--green:#12845c;--amber:#a46b15;--red:#c04b56;--shadow:0 9px 30px rgba(18,37,60,.055)}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--soft)}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #67ced0;outline-offset:2px}
@@ -47,7 +47,19 @@ h1,h2,h3,.kpi .num,.statmini strong,.capcard strong{font-family:Manrope,'DM Sans
 /* User-selectable dark theme */
 body.dark{--ink:#e8ecfb;--muted:#9aa8c1;--line:#30415a;--soft:#101827;--surface:#182436;--shadow:0 10px 35px rgba(0,0,0,.11);background:#101827;color:var(--ink)}
 body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.dark .quick-stat,body.dark .assignment-card{background:#182436;border-color:#2b3c56}body.dark .kpi{background:#1d2b40}body.dark .kpi .sub,body.dark .kpi .lab{color:#a7b4cd}body.dark .control,body.dark .sort-select,body.dark .icon-button,body.dark .capnums input{background:#1d2c42;border-color:#3b4b65;color:#eef2ff}body.dark .datatable th,body.dark .statmini,body.dark .inlineinfo,body.dark .notice,body.dark .uploadzone{background:#202e42;color:#b3c1dc;border-color:#34445d}body.dark .datatable td{border-color:#304058}body.dark .datatable td strong{color:#9faeff}body.dark .datatable tbody tr:hover,body.dark .capline:hover,body.dark .trenditem:hover{background:#263653}body.dark .date-control,body.dark .view-switch{background:#202e43;border-color:#34455e}body.dark .date-arrow{color:#b0bfdb}body.dark .modebtn.active{background:#31415c;color:#d5ddff}body.dark .assignment-card-name,body.dark .capcardhead p,body.dark .assignment-card-owner{color:#b0beda}body.dark .assignment-card-header strong{color:#aebaff}body.dark .bar,body.dark .capcard-progress{background:#35445e}body.dark .group-filter-chip{background:#283864;color:#d2dcff}body.dark .notice strong{color:#bac9ff}body.dark .capacitynotice{background:#163a3a;color:#a5f1d7;border-color:#32756b}body.dark .capacitynotice.error{background:#493039;color:#ffb9c5;border-color:#894b5b}body.dark .chip.neutral-chip{background:#283857;color:#cbd5f3}body.dark .kpi:after{opacity:.2}body.dark .statmini{border-color:#344259}body.dark .linkbtn{color:#9aafff}body.dark .hero{border:1px solid #354992}body.dark .assignment-card-footer{border-color:#344259}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 @media print{.hero{color:#fff!important}.mobile-fab,.sidebar-status,.icon-button,.view-switch{display:none!important}}
+
+/* === Agenda 360 Pro / visual dispatch === */
+.dispatch-layout{display:grid;grid-template-columns:minmax(290px,335px) minmax(0,1fr);gap:16px;align-items:start;margin-bottom:20px;scroll-margin-top:102px}
+.dispatch-queue{overflow:hidden;position:sticky;top:103px;min-height:460px}.dispatch-queue-head{padding:20px 20px 12px;border-bottom:1px solid var(--line)}.dispatch-queue-head h3,.dispatch-board-head h3{font-family:Manrope,sans-serif;font-size:17px;letter-spacing:-.6px;margin:0}.dispatch-queue-head p,.dispatch-board-head p{font-size:11px;line-height:1.6;color:var(--muted);margin:7px 0 15px}.dispatch-count{font-family:'DM Sans',sans-serif;display:inline-flex;min-width:24px;height:24px;padding:2px 7px;justify-content:center;align-items:center;border-radius:20px;color:#485bce;background:#edf0ff;font-size:11px;vertical-align:middle}.dispatch-upload-row{display:flex;gap:8px;margin-bottom:12px}.dispatch-upload{flex:1;text-align:center;cursor:pointer;font-size:12px}.dispatch-queue-tools{display:grid;grid-template-columns:1fr 126px;gap:7px}.dispatch-queue-tools .control{font-size:11px;min-width:0}.dispatch-metrics{margin-top:12px;display:flex;flex-wrap:wrap;gap:7px;font-size:10px;color:#8491a4}.dispatch-metrics span{background:#f2f5fb;padding:5px 8px;border-radius:8px;font-weight:750}.dispatch-queue-scroll{padding:12px;max-height:min(57vh,600px);overflow-y:auto;overscroll-behavior:contain;min-height:140px}.queue-card{position:relative;background:#fff;border:1px solid #e7ebf3;border-left:3px solid #6a7be6;border-radius:11px;padding:13px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;transition:border .15s,background .15s,box-shadow .15s}.queue-card:active{cursor:grabbing}.queue-card:hover,.queue-card.is-selected{background:#f5f7ff;border-color:#8593ea;box-shadow:0 6px 14px #425be01a}.queue-card.is-selected{border-left-color:#29b89c}.queue-card-main{min-width:0}.queue-card-title{font-family:Manrope,sans-serif;font-size:13px;font-weight:850;line-height:1.3;overflow-wrap:anywhere}.queue-card-rol{font-size:11px;color:#75839a;margin-top:4px;overflow-wrap:anywhere}.queue-card-meta{display:flex;gap:6px;margin-top:7px}.queue-zone-tag{font-size:9px;padding:3px 7px;background:#eef0fc;color:#5165cb;border-radius:5px;font-weight:800}.queue-card-handle{font-size:19px;color:#a3aac0;letter-spacing:1px;flex:none}.dispatch-queue-foot{padding:9px 16px 13px;display:flex;justify-content:space-between;gap:4px;border-top:1px solid var(--line)}.dispatch-queue-foot .linkbtn{font-size:10px}.queue-empty{text-align:center;color:#99a6bb;padding:27px 15px;line-height:1.8;font-size:12px}.queue-empty strong{display:block;font-family:Manrope;color:var(--ink);font-size:14px;margin-bottom:5px}
+.dispatch-capacity{padding:20px;min-width:0}.dispatch-board-head{display:flex;justify-content:space-between;align-items:start;gap:14px;margin-bottom:10px}.dispatch-board-head p{margin:7px 0 4px}.dispatch-available{background:#e6f7f1;color:#16846a;border-radius:9px;white-space:nowrap;font-family:Manrope,sans-serif;font-size:11px;font-weight:850;padding:9px 10px}.dispatch-zones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.dispatch-zone{background:#fafbfe;border:1px solid #e7ebf4;border-radius:12px;padding:13px;min-width:0;transition:box-shadow .14s,border-color .14s}.dispatch-zone.zone-focus{border-color:#8e9dea;box-shadow:0 0 0 2px #8696e62b}.dispatch-zone-top{display:flex;align-items:center;justify-content:space-between;gap:7px}.dispatch-zone-top strong{font-family:Manrope,sans-serif;font-size:13px;letter-spacing:-.25px}.dispatch-zone-top small{font-size:10px;font-weight:850;color:#6574a8}.dispatch-zone-address{font-size:10px;line-height:1.35;color:#9ba5b6;margin-top:4px;min-height:27px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.dispatch-zone-shared{font-size:9px;color:#6c65ba;margin:7px 0 0;font-weight:800}.dispatch-meter{height:5px;background:#e8ecf5;border-radius:10px;overflow:hidden;margin:10px 0}.dispatch-meter span{height:100%;display:block;background:linear-gradient(90deg,#7180ec,#31ba98);transition:width .25s}.dispatch-lanes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:9px}.dispatch-slot{border:1px dashed #c7d1e4;border-radius:9px;background:#fff;min-height:58px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:6px 3px;font-size:10px;font-weight:850;color:#4b5b75;cursor:pointer;transition:background .15s,border .15s,transform .15s}.dispatch-slot b{font-family:Manrope,sans-serif;font-size:15px;font-weight:850;line-height:1}.dispatch-slot[data-drop-type='HAB']{border-color:#c3ded4;color:#168b70}.dispatch-slot.is-full{opacity:.43;cursor:not-allowed;background:#f0f2f7}.dispatch-slot.is-eligible{border-color:#6e7edc;background:#eef1ff;border-style:solid;box-shadow:0 0 0 2px #7f8ee71b}.dispatch-slot.is-hot{transform:scale(1.045);border-color:#19bfa0!important;background:#e2fbf1!important;box-shadow:0 0 0 2px #47bd9c40}.dispatch-slot.is-invalid{opacity:.37}.dispatch-zone-usage{font-size:9.5px;color:#8592a7;margin-top:8px;text-align:right}.queue-selected-banner{padding:11px 12px;margin:12px 0 15px;background:#eef1ff;color:#394ea2;border:1px solid #cdd5ff;border-radius:10px;font-size:11px;display:flex;align-items:center;justify-content:space-between;gap:8px}.queue-selected-banner button{border:0;background:transparent;color:#374ec3;font-weight:850;cursor:pointer}.dispatch-guide{font-size:10px;border-top:1px solid var(--line);padding-top:14px;margin-top:18px;display:flex;gap:15px;flex-wrap:wrap;color:#8390a4}.dispatch-guide span{display:flex;gap:6px;align-items:center}.dispatch-legend{display:inline-block;width:9px;height:9px;border-radius:3px;background:#6578e7}.dispatch-legend.hab{background:#26ae8e}.touch-drag-ghost{position:fixed;z-index:999;pointer-events:none;width:176px;padding:11px 13px;border-radius:12px;background:#273c85;color:#fff;box-shadow:0 15px 35px #10264e55;font-weight:850;font-size:12px;transform:translate(-50%,-105%)}
+body.dark .dispatch-zone{background:#202d43;border-color:#35445c}body.dark .queue-card,body.dark .dispatch-slot{background:#1d2b40;border-color:#415577;color:#e6ecff}body.dark .queue-card.is-selected,body.dark .dispatch-slot.is-eligible{background:#2a3961}body.dark .dispatch-queue{background:#182436}body.dark .dispatch-queue-head,body.dark .dispatch-queue-foot,body.dark .dispatch-guide{border-color:#35445c}body.dark .dispatch-metrics span{background:#2b3954;color:#ced9f0}body.dark .dispatch-available{background:#153e3c;color:#8ce3ce}body.dark .queue-card-title,body.dark .queue-empty strong{color:#f0f3ff}body.dark .dispatch-slot.is-full{background:#141e2c}body.dark .queue-selected-banner{background:#273963;color:#d8e0ff;border-color:#576eaa}
+@media(max-width:1320px){.dispatch-zones{grid-template-columns:repeat(2,minmax(0,1fr))}.dispatch-layout{grid-template-columns:minmax(270px,305px) minmax(0,1fr)}}
+@media(max-width:980px){.dispatch-layout{grid-template-columns:1fr}.dispatch-queue{position:static;min-height:0}.dispatch-queue-scroll{max-height:260px}.dispatch-zones{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.dispatch-zones{grid-template-columns:repeat(2,minmax(0,1fr))}.dispatch-capacity,.dispatch-queue-head{padding:15px}.dispatch-queue-scroll{max-height:225px}.dispatch-layout{scroll-margin-top:70px}.dispatch-slot{min-height:61px}.dispatch-queue-tools{grid-template-columns:minmax(0,1fr) minmax(105px,120px)}}
+@media(max-width:370px){.dispatch-zones{grid-template-columns:1fr}.dispatch-slot{min-height:48px}.dispatch-board-head{flex-wrap:wrap}}
+
 </style>
 </head>
 <body>
@@ -70,7 +82,7 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
     <main class="content">
       <section class="section active" id="view-resumen">
         <div class="pagehead"><div><div class="section-kicker">DASHBOARD / OVERVIEW</div><h2>Estado de la operación</h2><p>Visibilidad integral de las asignaciones, capacidad y desempeño diario.</p></div><div class="btnrow"><button class="btn" id="gotoAgenda">Ver agenda <span aria-hidden="true">↗</span></button><button class="btn" id="exportDay">↓ Exportar CSV</button></div></div>
-        <div class="hero card" id="dashboardHero"><div class="hero-copy"><div class="hero-eyebrow"><span class="live-circle"></span> RESUMEN OPERACIONAL <span id="heroDateLabel"></span></div><h2>Tu capacidad diaria, <em>bajo control.</em></h2><p>Planifica trabajos SSDD con visibilidad inmediata de los cupos disponibles y los recursos asignados por zona.</p><div class="hero-actions"><button class="btn hero-primary" id="heroNew">＋ Agendar trabajo</button><button class="btn hero-secondary" id="heroCapacity">Explorar capacidad ↗</button></div></div><div class="hero-chart"><div class="hero-donut" id="heroDonut"><div class="donut-center"><strong id="heroPercent">0%</strong><span>utilización</span></div></div><div class="donut-label"><span><i class="legend-used"></i> Ocupados</span><span><i class="legend-free"></i> Disponibles</span></div></div></div>
+        <div class="hero card" id="dashboardHero"><div class="hero-copy"><div class="hero-eyebrow"><span class="live-circle"></span> RESUMEN OPERACIONAL <span id="heroDateLabel"></span></div><h2>Tu capacidad diaria, <em>bajo control.</em></h2><p>Planifica trabajos SSDD con visibilidad inmediata de los cupos disponibles y los recursos asignados por zona.</p><div class="hero-actions"><button class="btn hero-primary" id="heroNew">＋ Agendar trabajo</button><button class="btn hero-secondary" id="heroDispatch">Arrastrar SSDD ↗</button><button class="btn hero-secondary" id="heroCapacity">Explorar capacidad ↗</button></div></div><div class="hero-chart"><div class="hero-donut" id="heroDonut"><div class="donut-center"><strong id="heroPercent">0%</strong><span>utilización</span></div></div><div class="donut-label"><span><i class="legend-used"></i> Ocupados</span><span><i class="legend-free"></i> Disponibles</span></div></div></div>
         <div class="kpis" id="kpiContainer"></div>
         <div class="twocol">
           <div class="card cardpad utilization-card"><div class="cardhead"><div><div class="mini-kicker">DISTRIBUCIÓN TERRITORIAL</div><h3>Ocupación por zona / grupo</h3></div><div class="cardhead-options"><span class="hint">Selecciona una zona para ver sus trabajos</span><select id="zoneSort" aria-label="Ordenar zonas" class="sort-select"><option value="zone">Orden: zona</option><option value="occupation">Mayor ocupación</option><option value="available">Más cupos libres</option></select></div></div><div id="capacityBars"></div><div class="legend-small"><i class="legend-used"></i> Cupos utilizados <i class="legend-free"></i> Disponibles</div></div>
@@ -81,14 +93,47 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
       <section class="section" id="view-agenda">
         <div class="pagehead"><div><div class="section-kicker">PLANIFICACIÓN / ASIGNACIONES</div><h2>Agenda diaria</h2><p>Agrega nuevos SSDD y gestiona los recursos disponibles según la zona.</p></div><button id="goTopForm" class="btn primary">＋ Crear SSDD</button></div>
         <div class="quick-strip" id="agendaMiniStrip"></div>
-        <div class="card cardpad" id="assignmentFormCard">
+        <div class="dispatch-layout" id="dispatchBoard">
+          <aside class="card dispatch-queue" aria-label="SSDD disponibles para asignación">
+            <div class="dispatch-queue-head">
+              <div class="mini-kicker">BANDEJA / PENDIENTES</div>
+              <h3>Trabajos por asignar <span class="dispatch-count" id="queueCount">0</span></h3>
+              <p>Importa Excel con SSDD, ROL y ZONA TOA. Arrastra uno por uno hacia su capacidad.</p>
+              <div class="dispatch-upload-row">
+                <label class="btn primary dispatch-upload" for="queueFile">⇧ Cargar Excel</label>
+                <input id="queueFile" type="file" accept=".xlsx,.xls,.csv" hidden>
+                <button class="btn small" id="queueTemplate" type="button" title="Ejemplo de archivo CSV">Plantilla</button>
+              </div>
+              <div class="dispatch-queue-tools">
+                <input class="control" id="queueSearch" type="search" placeholder="Buscar SSDD o ROL…" aria-label="Buscar trabajos pendientes">
+                <select class="control" id="queueZoneFilter" aria-label="Filtrar zona TOA"><option value="">Todas las zonas</option></select>
+              </div>
+              <div class="dispatch-metrics" id="queueMetrics"></div>
+            </div>
+            <div id="queueCards" class="dispatch-queue-scroll" aria-live="polite"></div>
+            <div class="dispatch-queue-foot">
+              <button class="linkbtn" type="button" id="queueClear">Limpiar pendientes</button>
+              <button class="linkbtn" type="button" id="queueExport">Exportar pendientes</button>
+            </div>
+          </aside>
+          <section class="card dispatch-capacity" aria-label="Capacidad disponible por zona TOA">
+            <div class="dispatch-board-head">
+              <div><div class="mini-kicker">AGENDA / ASIGNACIÓN VISUAL</div><h3>Capacity por zona</h3><p>Elige el tipo de cupo al soltar cada SSDD. Las zonas compartidas descuentan de un único grupo.</p></div>
+              <span class="dispatch-available" id="dispatchAvailable">27 libres</span>
+            </div>
+            <div id="queueSelectionBanner" class="queue-selected-banner hidden" role="status"></div>
+            <div id="dispatchZones" class="dispatch-zones"></div>
+            <div class="dispatch-guide"><span><i class="dispatch-legend pext"></i> PEXT</span><span><i class="dispatch-legend hab"></i> HAB</span><span>En móvil: toca un SSDD y luego toca el cupo.</span></div>
+          </section>
+        </div>
+        <div class="card cardpad" id="assignmentFormCard" style="margin-top:18px">
           <div class="cardhead"><h3 id="formHeading">Nueva asignación</h3><span class="hint">* Campos obligatorios</span></div>
           <form id="assignmentForm" autocomplete="off">
             <div class="formgrid">
               <div class="field"><label for="ssdd">Número de SSDD *</label><input class="control" id="ssdd" name="ssdd" required maxlength="80" placeholder="Ej. 12345678"></div>
-              <div class="field"><label for="formDate">Fecha de agenda *</label><input type="date" class="control" id="formDate" required></div>
-              <div class="field"><label for="formAgency">Agencia *</label><select class="control" id="formAgency" required></select></div>
-              <div class="field"><label for="formZone">Zona / grupo</label><input class="control" id="formZone" readonly placeholder="Según agencia"></div>
+              <div class="field"><label for="formRol">ROL</label><input class="control" id="formRol" maxlength="90" placeholder="ROL del Excel"></div><div class="field"><label for="formDate">Fecha de agenda *</label><input type="date" class="control" id="formDate" required></div>
+              <div class="field"><label for="formAgency">Agencia (opcional)</label><select class="control" id="formAgency"></select></div><div class="field"><label for="formZoneInput">Zona TOA *</label><select class="control" id="formZoneInput" required></select></div>
+              <div class="field"><label for="formZone">Capacity compartida</label><input class="control" id="formZone" readonly placeholder="Según agencia"></div>
               <div class="field"><label for="formType">Especialidad *</label><select class="control" id="formType" required><option value="PEXT">PEXT</option><option value="HAB">HAB</option></select></div>
               <div class="field widephone"><label for="formOwner">Responsable / cuadrilla *</label><input class="control" id="formOwner" maxlength="120" required placeholder="Ej. Cuadrilla norte"></div>
               <div class="field"><label for="formPriority">Prioridad</label><select class="control" id="formPriority"><option>Normal</option><option>Alta</option><option>Crítica</option><option>Baja</option></select></div>
@@ -103,7 +148,7 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
           <div class="cardhead"><div><div class="mini-kicker">SEGUIMIENTO DEL DÍA</div><h3>Trabajos agendados <span class="list-count" id="agendaCount"></span></h3></div><div class="view-switch" role="group" aria-label="Cambiar visualización"><button id="modeTable" class="modebtn active" aria-pressed="true" type="button">☷ Tabla</button><button id="modeCards" class="modebtn" aria-pressed="false" type="button">▦ Tarjetas</button></div></div>
           <div id="groupFilterChip" class="group-filter-chip hidden"></div>
           <div class="filters"><div class="filter wide"><label for="agendaSearch">Buscar SSDD / responsable</label><input class="control" id="agendaSearch" placeholder="Buscar…"></div><div class="filter"><label for="agendaZoneFilter">Zona</label><select class="control" id="agendaZoneFilter"></select></div><div class="filter"><label for="agendaTypeFilter">Especialidad</label><select class="control" id="agendaTypeFilter"><option value="">Todas</option><option>PEXT</option><option>HAB</option></select></div><div class="filter"><label for="agendaStatusFilter">Estado</label><select class="control" id="agendaStatusFilter"><option value="">Todos</option><option>Asignado</option><option>Pendiente</option><option>En ejecución</option><option>Exitoso</option><option>Reprogramado</option><option>Cancelado</option></select></div></div>
-          <div class="tablewrap" id="agendaTableWrap"><table class="datatable"><thead><tr><th>SSDD</th><th>Agencia</th><th>Zona</th><th>Tipo</th><th>Responsable</th><th>Prioridad</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="agendaBody"></tbody></table></div><div id="agendaCards" class="assignment-cards hidden"></div>
+          <div class="tablewrap" id="agendaTableWrap"><table class="datatable"><thead><tr><th>SSDD</th><th>ROL</th><th>Agencia</th><th>Zona</th><th>Tipo</th><th>Responsable</th><th>Prioridad</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="agendaBody"></tbody></table></div><div id="agendaCards" class="assignment-cards hidden"></div>
         </div>
       </section>
       <section class="section" id="view-capacidad">
@@ -113,7 +158,7 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
       </section>
       <section class="section" id="view-historial">
         <div class="pagehead"><div><div class="section-kicker">AUDITORÍA / TRAZABILIDAD</div><h2>Historial de asignaciones</h2><p>Trazabilidad de SSDD entre fechas, agencias y responsables.</p></div><button class="btn" id="exportHistory">Exportar historial CSV</button></div>
-        <div class="card cardpad"><div class="filters"><div class="filter wide"><label for="historySearch">Buscar</label><input class="control" id="historySearch" placeholder="SSDD, agencia o responsable"></div><div class="filter"><label for="historyFrom">Desde</label><input type="date" class="control" id="historyFrom"></div><div class="filter"><label for="historyTo">Hasta</label><input type="date" class="control" id="historyTo"></div><div class="filter"><label for="historyStatus">Estado</label><select class="control" id="historyStatus"><option value="">Todos</option><option>Asignado</option><option>Pendiente</option><option>En ejecución</option><option>Exitoso</option><option>Reprogramado</option><option>Cancelado</option></select></div></div><div class="countline" id="historyCount"></div><div class="tablewrap"><table class="datatable"><thead><tr><th>Fecha</th><th>SSDD</th><th>Agencia</th><th>Zona</th><th>Tipo</th><th>Responsable</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="historyBody"></tbody></table></div></div>
+        <div class="card cardpad"><div class="filters"><div class="filter wide"><label for="historySearch">Buscar</label><input class="control" id="historySearch" placeholder="SSDD, agencia o responsable"></div><div class="filter"><label for="historyFrom">Desde</label><input type="date" class="control" id="historyFrom"></div><div class="filter"><label for="historyTo">Hasta</label><input type="date" class="control" id="historyTo"></div><div class="filter"><label for="historyStatus">Estado</label><select class="control" id="historyStatus"><option value="">Todos</option><option>Asignado</option><option>Pendiente</option><option>En ejecución</option><option>Exitoso</option><option>Reprogramado</option><option>Cancelado</option></select></div></div><div class="countline" id="historyCount"></div><div class="tablewrap"><table class="datatable"><thead><tr><th>Fecha</th><th>SSDD</th><th>ROL</th><th>Agencia</th><th>Zona</th><th>Tipo</th><th>Responsable</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="historyBody"></tbody></table></div></div>
       </section>
       <section class="section" id="view-datos">
         <div class="pagehead"><div><div class="section-kicker">ADMINISTRACIÓN / DATOS</div><h2>Importación y respaldo</h2><p>Incorpore masivamente SSDD y guarde una copia de sus datos.</p></div></div>
@@ -124,7 +169,7 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
           <div class="card cardpad"><div class="cardhead"><h3>Reglas de asignación</h3></div><p>La agencia determina automáticamente su zona. Cuando varias zonas comparten un mismo grupo de capacity, las asignaciones de todas ellas descuentan del mismo cupo diario.</p><p>Se controla la capacidad de PEXT, HAB y los cupos flexibles sin especialidad definida. El estado <strong>Cancelado</strong> o <strong>Reprogramado</strong> libera el cupo de la fecha original; los demás estados siguen consumiéndolo.</p><p>Un SSDD puede aparecer en distintas fechas para mantener su trazabilidad, pero no dos veces en la misma fecha.</p></div>
         </div>
       </section>
-      <div class="footnote">Agenda Capacity 360 Pro · Versión 2.0 · Dashboard operacional</div>
+      <div class="footnote">Agenda Capacity 360 Pro · Versión 3.0 · Asignación visual SSDD</div>
     </main>
   </div>
 </div>
@@ -158,15 +203,16 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
   const total=p=>p.pext+p.hab+p.general;
   const zoneFor=agency=>{let a=normalize(agency);for(let [zone,list] of Object.entries(agencies)){if(list.some(x=>normalize(x)===a))return Number(zone)}return null};
   const poolFor=zone=>state.pools.find(p=>p.zones.includes(Number(zone)));
+  const validZone=zone=>Number.isInteger(Number(zone))&&Number(zone)>=1&&Number(zone)<=15;
   const poolLabel=p=>p.zones.length===1?'ZONA '+p.zones[0]:'ZONAS '+p.zones.join(', ');
   const counted=status=>!['Cancelado','Reprogramado'].includes(status);
-  const safeStore=()=>{try{localStorage.setItem(localKey,JSON.stringify({records:state.records,pools:state.pools}));return true}catch(e){notify('No se pudo guardar en el navegador. Exporta un respaldo JSON.','error');return false}};
+  const safeStore=()=>{try{localStorage.setItem(localKey,JSON.stringify({records:state.records,pools:state.pools,queue:state.queue}));return true}catch(e){notify('No se pudo guardar en el navegador. Exporta un respaldo JSON.','error');return false}};
   const initStore=()=>{try{const v=JSON.parse(localStorage.getItem(localKey));if(v&&Array.isArray(v.records)&&Array.isArray(v.pools)&&v.pools.length===defaultPools.length){
-      return {records:v.records.filter(r=>r&&r.id&&r.date&&r.ssdd&&r.agency&&['PEXT','HAB'].includes(r.type)),pools:defaultPools.map(d=>{const p=v.pools.find(x=>x.id===d.id)||d;return {...d,pext:positive(p.pext,d.pext),hab:positive(p.hab,d.hab),general:positive(p.general,d.general)}})};
-    }}catch(e){}return {records:[],pools:structuredClone(defaultPools)}};
+      return {records:v.records.filter(r=>r&&r.id&&r.date&&r.ssdd&&((r.agency&&zoneFor(r.agency))||validZone(r.zone))&&['PEXT','HAB'].includes(r.type)),queue:Array.isArray(v.queue)?v.queue.filter(q=>q&&q.id&&q.ssdd&&validZone(q.zone)):[],pools:defaultPools.map(d=>{const p=v.pools.find(x=>x.id===d.id)||d;return {...d,pext:positive(p.pext,d.pext),hab:positive(p.hab,d.hab),general:positive(p.general,d.general)}})};
+    }}catch(e){}return {records:[],queue:[],pools:structuredClone(defaultPools)}};
   function positive(n,fallback=0){return Number.isInteger(Number(n))&&Number(n)>=0&&Number(n)<=10000?Number(n):fallback}
   const persisted=initStore();
-  const state={records:persisted.records,pools:persisted.pools,day:today(),view:'resumen',editing:null,agendaMode:(typeof window!=='undefined'&&window.innerWidth<=760)?'cards':'table',zoneSort:'zone',agendaFilters:{search:'',zone:'',pool:'',type:'',status:''},historyFilters:{search:'',from:'',to:'',status:''}};
+  const state={records:persisted.records,queue:persisted.queue||[],pools:persisted.pools,selectedQueue:null,queueSearch:'',queueZone:'',day:today(),view:'resumen',editing:null,agendaMode:(typeof window!=='undefined'&&window.innerWidth<=760)?'cards':'table',zoneSort:'zone',agendaFilters:{search:'',zone:'',pool:'',type:'',status:''},historyFilters:{search:'',from:'',to:'',status:''}};
   let toastHandle;
   function notify(message,kind='success'){const t=$('toast');t.textContent=message;t.className='toast show '+kind;clearTimeout(toastHandle);toastHandle=setTimeout(()=>t.className='toast',4900)}
   function getUse(poolId,day,exclude){const pool=state.pools.find(x=>x.id===poolId);let pext=0,hab=0;
@@ -191,7 +237,7 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
     document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id==='view-'+view));
     document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
     $('headerTitle').textContent=({resumen:'Panel de operación diaria',agenda:'Gestión de agenda',capacidad:'Capacity por zonas',historial:'Trazabilidad de SSDD',datos:'Gestión de datos'})[view];
-    window.scrollTo({top:0,behavior:'instant'});
+    window.scrollTo({top:0,left:0,behavior:'instant'});
   }
   function prettyDate(s){const date=new Date(s+'T12:00:00');return new Intl.DateTimeFormat('es-CL',{weekday:'long',day:'numeric',month:'long'}).format(date)}
   function gotoNewCase(){showView('agenda');resetForm();$('ssdd').focus();$('assignmentFormCard').scrollIntoView({behavior:'smooth',block:'start'})}
@@ -202,7 +248,7 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
     $('sideCapacity').innerHTML=cup+' <small>cupos / día</small>';$('sideUsage').textContent=used+' ocupados · '+free+' disponibles';document.querySelector('.sidebar-meter span').style.width=Math.min(100,filledPct(used,cup))+'%';
     $('agendaMiniStrip').innerHTML=`<div class="quick-stat"><span class="quick-icon">▦</span><div><small>En agenda</small><strong>${allDate(state.day).length}</strong></div></div><div class="quick-stat"><span class="quick-icon">✓</span><div><small>Disponibles</small><strong>${free}</strong></div></div><div class="quick-stat"><span class="quick-icon">◉</span><div><small>Utilización</small><strong>${filledPct(used,cup)}%</strong></div></div>`;
   }
-  function renderAll(){renderSummary();renderAgenda();renderCapacity();renderHistory();renderCoverage();renderCapacityHint()}
+  function renderAll(){renderSummary();renderAgenda();renderCapacity();renderHistory();renderCoverage();renderCapacityHint();renderDispatch()}
   function renderSummary(){const active=activeDate(state.day),recs=allDate(state.day),used=active.length,cup=currentTotal();
     const success=recs.filter(r=>r.status==='Exitoso').length;
     const kpis=[['SSDD en agenda',recs.length,'Todos los estados'],['Capacidad ocupada',used+' / '+cup,filledPct(used,cup)+'% de los cupos diarios'],['Cupos disponibles',Math.max(0,cup-used),'PEXT, HAB y flexibles'],['Éxito agenda',success,filledPct(success,recs.length)+'% de los SSDD del día']];
@@ -217,7 +263,7 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
     $('typeSummary').innerHTML=['PEXT','HAB'].map(type=>{const list=active.filter(r=>r.type===type),s=list.filter(r=>r.status==='Exitoso').length,capa=state.pools.reduce((a,p)=>a+(type==='PEXT'?p.pext:p.hab),0),pct=filledPct(list.length,capa);
       return `<div class="statmini"><div class="mini-detail"><span class="chip ${type}">${type}</span><span class="hint">${list.length} / ${capa} cupos especializados</span></div><strong>${list.length} <span style="font-size:12px;color:var(--muted);font-weight:650">asignados</span></strong><small>${s} exitosos · ${list.length-s} en otros estados</small><div class="bar"><span style="width:${Math.min(100,pct)}%"></span></div></div>`}).join('');
   }
-  function renderCapacityHint(){const z=zoneFor($('formAgency').value),p=poolFor(z),day=$('formDate').value,type=$('formType').value;
+  function renderCapacityHint(){const z=zoneFor($('formAgency').value)||Number($('formZoneInput').value),p=poolFor(z),day=$('formDate').value,type=$('formType').value;
     $('formZone').value=z?`Zona ${z} · ${poolLabel(p)}`:'';const hint=$('capacityHint');
     if(!p||!day){hint.className='capacitynotice';hint.textContent='Selecciona una fecha y agencia para verificar la capacidad disponible antes de asignar.';return}
     const u=getUse(p.id,day,state.editing),available=hasSlot(p,day,type,state.editing);
@@ -225,31 +271,31 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
     hint.className='capacitynotice '+(available?'':'error');hint.textContent=`${poolLabel(p)}: ${u.total}/${u.slots} cupos ocupados · PEXT ${u.pext}/${p.pext} · HAB ${u.hab}/${p.hab}${extra}. ${available?'Hay capacidad para esta asignación.':'Sin capacidad disponible para '+type+' en esta fecha.'}`;
   }
   function resetForm(){state.editing=null;$('assignmentForm').reset();$('formDate').value=state.day;$('formHeading').textContent='Nueva asignación';$('submitCase').textContent='Guardar asignación';$('formType').value='PEXT';$('formStatus').value='Asignado';renderCapacityHint()}
-  function editCase(id){const r=state.records.find(x=>x.id===id);if(!r)return;showView('agenda');state.editing=id;$('ssdd').value=r.ssdd;$('formDate').value=r.date;$('formAgency').value=r.agency;$('formType').value=r.type;$('formOwner').value=r.owner;$('formPriority').value=r.priority;$('formStatus').value=r.status;$('formNote').value=r.note||'';
+  function editCase(id){const r=state.records.find(x=>x.id===id);if(!r)return;showView('agenda');state.editing=id;$('ssdd').value=r.ssdd;$('formDate').value=r.date;$('formAgency').value=r.agency||'';$('formZoneInput').value=r.zone;$('formRol').value=r.rol||'';$('formType').value=r.type;$('formOwner').value=r.owner;$('formPriority').value=r.priority;$('formStatus').value=r.status;$('formNote').value=r.note||'';
     $('formHeading').textContent='Editar SSDD '+r.ssdd;$('submitCase').textContent='Guardar cambios';renderCapacityHint();$('assignmentFormCard').scrollIntoView({behavior:'smooth',block:'start'});
   }
   function newId(){return 'S-'+Date.now()+'-'+Math.random().toString(36).slice(2,9)}
-  function normalizeRecord(raw,id){return {id:id||newId(),ssdd:String(raw.ssdd||'').trim(),date:raw.date,agency:raw.agency,zone:zoneFor(raw.agency),type:raw.type,owner:String(raw.owner||'').trim(),priority:raw.priority||'Normal',status:raw.status||'Asignado',note:String(raw.note||'').trim(),updatedAt:new Date().toISOString()}}
-  function validateRecord(r,excludedId){if(!r.ssdd)return 'SSDD obligatorio';if(!/^\d{4}-\d\d-\d\d$/.test(r.date||'')||!validISO(r.date))return 'Fecha inválida';if(!zoneFor(r.agency))return 'Agencia no reconocida';if(!['PEXT','HAB'].includes(r.type))return 'El tipo debe ser PEXT o HAB';if(!r.owner)return 'Responsable obligatorio';
+  function normalizeRecord(raw,id){return {id:id||newId(),ssdd:String(raw.ssdd||'').trim(),rol:String(raw.rol||'').trim(),date:raw.date,agency:raw.agency||'',zone:zoneFor(raw.agency)||Number(raw.zone)||null,type:raw.type,owner:String(raw.owner||'').trim(),priority:raw.priority||'Normal',status:raw.status||'Asignado',note:String(raw.note||'').trim(),source:raw.source||'',updatedAt:new Date().toISOString()}}
+  function validateRecord(r,excludedId){if(!r.ssdd)return 'SSDD obligatorio';if(!/^\d{4}-\d\d-\d\d$/.test(r.date||'')||!validISO(r.date))return 'Fecha inválida';if(!validZone(r.zone))return 'Zona TOA no reconocida';if(r.agency&&zoneFor(r.agency)!==Number(r.zone))return 'La agencia no corresponde a la zona TOA';if(!['PEXT','HAB'].includes(r.type))return 'El tipo debe ser PEXT o HAB';if(!r.owner)return 'Responsable obligatorio';
     if(state.records.some(x=>x.id!==excludedId&&x.date===r.date&&normalize(x.ssdd)===normalize(r.ssdd)))return 'SSDD duplicado en la misma fecha';
     if(counted(r.status)){let p=poolFor(r.zone);if(!hasSlot(p,r.date,r.type,excludedId))return 'No hay capacidad disponible para '+r.type+' en '+poolLabel(p)}return ''}
   function validISO(s){const d=new Date(s+'T12:00:00');return !Number.isNaN(d.getTime())&&datestr(d)===s}
   function onSubmit(e){e.preventDefault();let a=$('formAgency').value;
-    const r=normalizeRecord({ssdd:$('ssdd').value,date:$('formDate').value,agency:a,type:$('formType').value,owner:$('formOwner').value,priority:$('formPriority').value,status:$('formStatus').value,note:$('formNote').value},state.editing);
+    const r=normalizeRecord({ssdd:$('ssdd').value,rol:$('formRol').value,date:$('formDate').value,agency:a,zone:Number($('formZoneInput').value),type:$('formType').value,owner:$('formOwner').value,priority:$('formPriority').value,status:$('formStatus').value,note:$('formNote').value,source:state.editing?state.records.find(r=>r.id===state.editing)?.source:''},state.editing);
     const msg=validateRecord(r,state.editing);if(msg){notify(msg,'error');renderCapacityHint();return}
     if(state.editing){const i=state.records.findIndex(x=>x.id===state.editing);if(i===-1)return;state.records[i]=r}else state.records.push(r);
     state.day=r.date;$('dayInput').value=state.day;safeStore();resetForm();renderAll();notify('SSDD '+r.ssdd+' guardado correctamente');
   }
-  function filteredAgenda(){const f=state.agendaFilters;return allDate(state.day).filter(r=>(!f.search||normalize([r.ssdd,r.owner,r.agency,r.note].join(' ')).includes(normalize(f.search)))&&(!f.zone||String(r.zone)===f.zone)&&(!f.pool||poolFor(r.zone)?.id===f.pool)&&(!f.type||r.type===f.type)&&(!f.status||r.status===f.status)).sort((a,b)=>a.agency.localeCompare(b.agency,'es')||a.ssdd.localeCompare(b.ssdd,'es'))}
-  function filteredHistory(){const f=state.historyFilters;return state.records.filter(r=>(!f.search||normalize([r.ssdd,r.owner,r.agency,r.note].join(' ')).includes(normalize(f.search)))&&(!f.from||r.date>=f.from)&&(!f.to||r.date<=f.to)&&(!f.status||r.status===f.status)).sort((a,b)=>b.date.localeCompare(a.date)||a.ssdd.localeCompare(b.ssdd,'es'))}
+  function filteredAgenda(){const f=state.agendaFilters;return allDate(state.day).filter(r=>(!f.search||normalize([r.ssdd,r.rol,r.owner,r.agency,r.note].join(' ')).includes(normalize(f.search)))&&(!f.zone||String(r.zone)===f.zone)&&(!f.pool||poolFor(r.zone)?.id===f.pool)&&(!f.type||r.type===f.type)&&(!f.status||r.status===f.status)).sort((a,b)=>a.agency.localeCompare(b.agency,'es')||a.ssdd.localeCompare(b.ssdd,'es'))}
+  function filteredHistory(){const f=state.historyFilters;return state.records.filter(r=>(!f.search||normalize([r.ssdd,r.rol,r.owner,r.agency,r.note].join(' ')).includes(normalize(f.search)))&&(!f.from||r.date>=f.from)&&(!f.to||r.date<=f.to)&&(!f.status||r.status===f.status)).sort((a,b)=>b.date.localeCompare(a.date)||a.ssdd.localeCompare(b.ssdd,'es'))}
   function statusChip(v){return `<span class="chip ${esc(v.replaceAll(' ','-').replaceAll('ó','o'))}">${esc(v)}</span>`}
-  function rowActions(r){return `<div class="actions"><button class="linkbtn" data-edit="${esc(r.id)}">Editar</button><button class="linkbtn delete" data-delete="${esc(r.id)}">Eliminar</button></div>`}
+  function rowActions(r){return `<div class="actions"><button class="linkbtn" data-edit="${esc(r.id)}">Editar</button>${r.source==='bandeja'?`<button class="linkbtn" data-return="${esc(r.id)}" title="Libera el cupo y devuelve el SSDD a pendientes">Devolver</button>`:''}<button class="linkbtn delete" data-delete="${esc(r.id)}">Eliminar</button></div>`}
   function renderAgenda(){const records=filteredAgenda();$('agendaCount').textContent=records.length+' registro'+(records.length!==1?'s':'');
-    $('agendaBody').innerHTML=records.map(r=>`<tr><td><strong>${esc(r.ssdd)}</strong></td><td>${esc(r.agency)}</td><td>Zona ${r.zone}</td><td><span class="chip ${r.type}">${r.type}</span></td><td>${shownText(r.owner)}</td><td>${esc(r.priority)}</td><td>${statusChip(r.status)}</td><td>${rowActions(r)}</td></tr>`).join('')||'<tr><td colspan="8" class="empty">No hay SSDD que coincidan con la fecha y los filtros seleccionados.</td></tr>';
-    $('agendaCards').innerHTML=records.map(r=>`<article class="assignment-card"><div class="assignment-card-header"><strong>SSDD ${esc(r.ssdd)}</strong>${statusChip(r.status)}</div><div class="assignment-card-name">${esc(r.agency)} · Zona ${r.zone}</div><div class="assignment-card-meta"><span class="chip ${r.type}">${r.type}</span><span class="chip">Prioridad ${esc(r.priority)}</span></div><div class="assignment-card-owner">◌ Responsable: <strong>${shownText(r.owner)}</strong></div><div class="assignment-card-footer"><span class="hint">${labelDate(r.date)}</span>${rowActions(r)}</div></article>`).join('')||'<div class="empty">No hay asignaciones para los filtros actuales.</div>';
+    $('agendaBody').innerHTML=records.map(r=>`<tr><td><strong>${esc(r.ssdd)}</strong></td><td>${shownText(r.rol)}</td><td>${shownText(r.agency)}</td><td>Zona ${r.zone}</td><td><span class="chip ${r.type}">${r.type}</span></td><td>${shownText(r.owner)}</td><td>${esc(r.priority)}</td><td>${statusChip(r.status)}</td><td>${rowActions(r)}</td></tr>`).join('')||'<tr><td colspan="9" class="empty">No hay SSDD que coincidan con la fecha y los filtros seleccionados.</td></tr>';
+    $('agendaCards').innerHTML=records.map(r=>`<article class="assignment-card"><div class="assignment-card-header"><strong>SSDD ${esc(r.ssdd)}</strong>${statusChip(r.status)}</div><div class="assignment-card-name">${shownText(r.agency)} · Zona ${r.zone} · ROL ${shownText(r.rol)}</div><div class="assignment-card-meta"><span class="chip ${r.type}">${r.type}</span><span class="chip">Prioridad ${esc(r.priority)}</span></div><div class="assignment-card-owner">◌ Responsable: <strong>${shownText(r.owner)}</strong></div><div class="assignment-card-footer"><span class="hint">${labelDate(r.date)}</span>${rowActions(r)}</div></article>`).join('')||'<div class="empty">No hay asignaciones para los filtros actuales.</div>';
     const chip=$('groupFilterChip');if(state.agendaFilters.pool){const p=state.pools.find(x=>x.id===state.agendaFilters.pool);chip.classList.remove('hidden');chip.innerHTML=`<span>Filtro activo: <strong>${p?poolLabel(p):''}</strong> · ${records.length} trabajos</span><button type="button" id="clearGroupFilter">Quitar filtro ×</button>`}else{chip.classList.add('hidden');chip.innerHTML=''}setAgendaMode(state.agendaMode);
   }
-  function renderHistory(){const records=filteredHistory();$('historyCount').textContent=records.length+' registro(s) del historial';$('historyBody').innerHTML=records.map(r=>`<tr><td>${labelDate(r.date)}</td><td><strong>${esc(r.ssdd)}</strong></td><td>${esc(r.agency)}</td><td>Zona ${r.zone}</td><td><span class="chip ${r.type}">${r.type}</span></td><td>${shownText(r.owner)}</td><td>${statusChip(r.status)}</td><td>${rowActions(r)}</td></tr>`).join('')||'<tr><td colspan="8" class="empty">Sin registros para los filtros aplicados.</td></tr>'}
+  function renderHistory(){const records=filteredHistory();$('historyCount').textContent=records.length+' registro(s) del historial';$('historyBody').innerHTML=records.map(r=>`<tr><td>${labelDate(r.date)}</td><td><strong>${esc(r.ssdd)}</strong></td><td>${shownText(r.rol)}</td><td>${shownText(r.agency)}</td><td>Zona ${r.zone}</td><td><span class="chip ${r.type}">${r.type}</span></td><td>${shownText(r.owner)}</td><td>${statusChip(r.status)}</td><td>${rowActions(r)}</td></tr>`).join('')||'<tr><td colspan="9" class="empty">Sin registros para los filtros aplicados.</td></tr>'}
   function renderCapacity(){const cup=currentTotal(),u=activeDate(state.day).length,full=state.pools.filter(p=>{const a=getUse(p.id,state.day);return a.total>=a.slots}).length;
     const info=[['Cupos totales',cup,'Capacidad diaria de todos los grupos'],['Cupos PEXT',state.pools.reduce((a,p)=>a+p.pext,0),'Cupos especializados PEXT'],['Cupos HAB',state.pools.reduce((a,p)=>a+p.hab,0),'Cupos especializados HAB'],['Cupos flexibles',state.pools.reduce((a,p)=>a+p.general,0),'Sin tipo informado en origen']];
     $('capacityKpis').innerHTML=info.map(k=>`<div class="card kpi"><div class="lab">${esc(k[0])}</div><div class="num">${k[1]}</div><div class="sub">${esc(k[2])}</div></div>`).join('');
@@ -266,24 +312,114 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
     const affected=[...new Set(state.records.filter(r=>counted(r.status)&&p.zones.includes(Number(r.zone))).map(r=>r.date))];const conflicts=affected.filter(date=>!getUse(p.id,date).ok);
     if(conflicts.length){Object.assign(p,old);notify('La nueva capacidad sería insuficiente en '+conflicts.length+' fecha(s), incluida(s) '+conflicts.slice(0,2).map(labelDate).join(', ')+'.','error');return}
     safeStore();renderAll();notify('Capacidad actualizada para '+poolLabel(p))}
-  function csvText(items){const fields=['SSDD','FECHA','AGENCIA','ZONA','TIPO','RESPONSABLE','PRIORIDAD','ESTADO','OBSERVACIONES'];const rows=[fields,...items.map(r=>[r.ssdd,r.date,r.agency,r.zone,r.type,r.owner,r.priority,r.status,r.note])];
+  function csvText(items){const fields=['SSDD','ROL','FECHA','AGENCIA','ZONA TOA','TIPO','RESPONSABLE','PRIORIDAD','ESTADO','OBSERVACIONES'];const rows=[fields,...items.map(r=>[r.ssdd,r.rol||'',r.date,r.agency,r.zone,r.type,r.owner,r.priority,r.status,r.note])];
     return '\uFEFF'+rows.map(row=>row.map(v=>{let s=String(v??'');if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}).join(';')).join('\r\n')}
   function download(text,file,type='text/plain;charset=utf-8'){const blob=new Blob([text],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=file;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
   function exportCSV(records,filename){download(csvText(records),filename,'text/csv;charset=utf-8')}
-  function backup(){download(JSON.stringify({version:1,exportedAt:new Date().toISOString(),records:state.records,pools:state.pools},null,2),'agenda_capacity_respaldo_'+state.day+'.json','application/json')}
+  function backup(){download(JSON.stringify({version:1,exportedAt:new Date().toISOString(),records:state.records,pools:state.pools,queue:state.queue},null,2),'agenda_capacity_respaldo_'+state.day+'.json','application/json')}
   function parseCSV(text){text=String(text).replace(/^\uFEFF/,'');const head=text.split(/\r?\n/)[0]||'';const delim=[';',',','\t'].sort((a,b)=>head.split(b).length-head.split(a).length)[0];
     const rows=[];let cells=[],cell='',quoted=false;
     for(let i=0;i<text.length;i++){let c=text[i];if(c==='"'){if(quoted&&text[i+1]==='"'){cell+='"';i++}else quoted=!quoted}else if(c===delim&&!quoted){cells.push(cell);cell=''}else if((c==='\r'||c==='\n')&&!quoted){if(c==='\r'&&text[i+1]==='\n')i++;cells.push(cell);if(cells.some(v=>v.trim()))rows.push(cells);cells=[];cell=''}else cell+=c}
     cells.push(cell);if(cells.some(v=>v.trim()))rows.push(cells);const header=rows.shift()||[];return rows.map(row=>Object.fromEntries(header.map((key,i)=>[key,row[i]||''])))}
-  const alias={ssdd:['SSDD','N SSDD','NUMERO SSDD','NRO SSDD','N° SSDD','ID SSDD'],date:['FECHA','FECHA AGENDA','FECHA DE AGENDA','DIA','DIA AGENDA'],agency:['AGENCIA','OFICINA'],type:['TIPO','ESPECIALIDAD','PEXT HAB','ACTIVIDAD'],owner:['RESPONSABLE','CUADRILLA','TECNICO','ASIGNADO A','GESTOR'],priority:['PRIORIDAD'],status:['ESTADO','STATUS'],note:['OBSERVACIONES','OBSERVACION','COMENTARIOS','NOTAS']};
+  const alias={ssdd:['SSDD','N SSDD','NUMERO SSDD','NRO SSDD','N° SSDD','ID SSDD'],date:['FECHA','FECHA AGENDA','FECHA DE AGENDA','DIA','DIA AGENDA'],agency:['AGENCIA','OFICINA'],rol:['ROL','ROL CLIENTE','ID ROL'],zone:['ZONA TOA','ZONA_TOA','ZONATOA','ZONA'],type:['TIPO','ESPECIALIDAD','PEXT HAB','ACTIVIDAD'],owner:['RESPONSABLE','CUADRILLA','TECNICO','ASIGNADO A','GESTOR'],priority:['PRIORIDAD'],status:['ESTADO','STATUS'],note:['OBSERVACIONES','OBSERVACION','COMENTARIOS','NOTAS']};
   function getValue(row,field){const entries=Object.entries(row).map(([k,v])=>[normalize(k).replace(/[^A-Z0-9 ]/g,'').trim(),v]);const names=alias[field].map(k=>normalize(k).replace(/[^A-Z0-9 ]/g,'').trim());const found=entries.find(([k])=>names.includes(k));return found?String(found[1]??'').trim():''}
   function parseDate(s){if(!s)return '';if(/^\d{4}-\d{2}-\d{2}$/.test(s))return s;let m=s.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})/);if(m)return `${m[3]}-${m[2].padStart(2,'0')}-${m[1].padStart(2,'0')}`;m=s.match(/^(\d{4})[\/-](\d{1,2})[\/-](\d{1,2})/);if(m)return `${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`;if(/^\d{5}$/.test(s)){const date=new Date(Date.UTC(1899,11,30)+Number(s)*86400000);return date.toISOString().slice(0,10)}return ''}
   async function sheetRows(file){const extension=file.name.toLowerCase();if(extension.endsWith('.csv'))return parseCSV(await file.text());if(!/\.(xlsx|xls)$/.test(extension))throw Error('Formato no admitido. Utiliza CSV, XLS o XLSX.');
     if(!window.XLSX){await new Promise((resolve,reject)=>{let script=document.createElement('script');script.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';script.onload=resolve;script.onerror=()=>reject(Error('No se pudo cargar el lector de Excel. Puedes convertir el archivo a CSV e importarlo sin conexión.'));document.head.appendChild(script)})}
     const buf=await file.arrayBuffer();const book=XLSX.read(buf,{type:'array',cellDates:false});const sheet=book.Sheets[book.SheetNames[0]];return XLSX.utils.sheet_to_json(sheet,{defval:'',raw:false});
   }
+  // Bandeja SSDD: no reserva cupo al importar; la reserva ocurre al soltar cada tarjeta.
+  function parseZoneToa(text){
+    const s=normalize(text);if(!s)return null;
+    const match=s.match(/^(?:ZONA(?:\s+TOA)?\s*[:#-]?\s*)?0*(1[0-5]|[1-9])(?:[.,]0+)?$/);
+    if(match)return Number(match[1]);
+    return zoneFor(s)||null;
+  }
+  function queueCsv(items){return '\uFEFF'+[['SSDD','ROL','ZONA TOA'],...items.map(i=>[i.ssdd,i.rol,i.zone])].map(row=>row.map(v=>{let s=String(v??'');if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}).join(';')).join('\r\n')}
+  function downloadQueueTemplate(){download(queueCsv([{ssdd:'12345678',rol:'ROL-001',zone:9},{ssdd:'12345679',rol:'ROL-002',zone:10}]),'plantilla_pendientes_SSDD_ROL_ZONA_TOA.csv','text/csv;charset=utf-8')}
+  function exportPending(){download(queueCsv(state.queue),'ssdd_pendientes_'+state.day+'.csv','text/csv;charset=utf-8')}
+  function importQueueRows(rows){
+    if(!rows.length)return {added:0,duplicates:0,invalid:0,errors:['El Excel no contiene filas']};
+    const headers=Object.keys(rows[0]).map(k=>normalize(k).replace(/[^A-Z0-9 ]/g,'').trim());
+    for(const col of ['ssdd','rol','zone'])if(!alias[col].some(n=>headers.includes(normalize(n).replace(/[^A-Z0-9 ]/g,'').trim())))return {added:0,duplicates:0,invalid:rows.length,errors:['Falta columna obligatoria: '+(col==='zone'?'ZONA TOA':col.toUpperCase())]};
+    let added=0,duplicates=0,invalid=0;const errors=[];
+    for(const [i,row] of rows.entries()){
+      const ssdd=getValue(row,'ssdd');const rol=getValue(row,'rol');const zone=parseZoneToa(getValue(row,'zone'));
+      if(!ssdd||!rol||!zone){invalid++;if(errors.length<4)errors.push('Fila '+(i+2)+': SSDD, ROL o ZONA TOA inválida');continue}
+      const key=normalize(ssdd);
+      if(state.queue.some(q=>normalize(q.ssdd)===key)||allDate(state.day).some(r=>normalize(r.ssdd)===key)){duplicates++;continue}
+      state.queue.push({id:'Q-'+newId(),ssdd,rol,zone,importedAt:new Date().toISOString()});added++;
+    }
+    safeStore();renderDispatch();return {added,duplicates,invalid,errors};
+  }
+  async function handleQueueImport(e){const f=e.target.files?.[0];if(!f)return;
+    try{const rows=await sheetRows(f),result=importQueueRows(rows);
+      notify(`Bandeja: ${result.added} nuevo(s) · ${result.duplicates} repetido(s) · ${result.invalid} inválido(s)${result.errors.length?' · '+result.errors[0]:''}`,result.added?'success':'error');
+      if(result.errors.length)$('queueFile').title=result.errors.join(' | ');
+    }catch(err){notify(err.message||'No se pudo importar el archivo','error')}finally{e.target.value=''}
+  }
+  function renderQueue(){
+    const items=state.queue.filter(q=>(!state.queueZone||String(q.zone)===state.queueZone)&&(!state.queueSearch||normalize(q.ssdd+' '+q.rol+' '+q.zone).includes(normalize(state.queueSearch))));
+    $('queueCount').textContent=state.queue.length;
+    $('queueMetrics').innerHTML=`<span>${state.queue.length} pendientes</span><span>${state.records.filter(r=>r.date===state.day&&r.source==='bandeja').length} arrastrados hoy</span><span>${items.length} visibles</span>`;
+    $('queueCards').innerHTML=items.map(q=>`<article class="queue-card ${state.selectedQueue===q.id?'is-selected':''}" draggable="true" role="button" tabindex="0" data-queue-id="${esc(q.id)}" aria-pressed="${state.selectedQueue===q.id}" aria-label="Seleccionar SSDD ${esc(q.ssdd)}, ROL ${esc(q.rol)}, zona ${q.zone}"><div class="queue-card-main"><div class="queue-card-title">${esc(q.ssdd)}</div><div class="queue-card-rol">ROL · ${esc(q.rol)}</div><div class="queue-card-meta"><span class="queue-zone-tag">ZONA TOA ${q.zone}</span></div></div><span class="queue-card-handle" aria-hidden="true">⠿</span></article>`).join('')||`<div class="queue-empty"><strong>${state.queue.length?'Sin coincidencias':'Sin SSDD pendientes'}</strong>${state.queue.length?'Modifica el filtro para ver otros trabajos.':'Carga tu Excel de tres columnas para comenzar.'}</div>`;
+  }
+  function renderDispatch(){
+    if(state.selectedQueue&&!state.queue.some(q=>q.id===state.selectedQueue))state.selectedQueue=null;
+    renderQueue();let used=activeDate(state.day).length;const banner=$('queueSelectionBanner'),item=state.queue.find(q=>q.id===state.selectedQueue);
+    banner.classList.toggle('hidden',!item);
+    banner.innerHTML=item?`<span><strong>SSDD ${esc(item.ssdd)}</strong> · ROL ${esc(item.rol)} · Zona ${item.zone}. Toca PEXT o HAB para asignar.</span><button type="button" id="clearQueueSelection">✕ Cancelar</button>`:'';
+    $('dispatchAvailable').textContent=Math.max(0,currentTotal()-used)+' libres';
+    $('dispatchZones').innerHTML=Object.keys(agencies).map(k=>{
+      const z=Number(k),p=poolFor(z),u=getUse(p.id,state.day),pct=filledPct(u.total,total(p));
+      const shared=p.zones.length>1?`<div class="dispatch-zone-shared">↔ Compartida con Zonas ${p.zones.filter(x=>x!==z).join(' y ')}</div>`:'';
+      const slots=['PEXT','HAB'].map(t=>{
+        const allowed=hasSlot(p,state.day,t);const n=t==='PEXT'?u.pext:u.hab,cap=t==='PEXT'?p.pext:p.hab;
+        const available=item&&item.zone===z&&allowed;
+        return `<button class="dispatch-slot ${!allowed?'is-full':''} ${item?(available?'is-eligible':'is-invalid'):''}" data-drop-zone="${z}" data-drop-type="${t}" aria-label="Asignar a Zona ${z}, ${t}, ${n} de ${cap} cupos específicos usados" title="${poolLabel(p)} · ${t} · ${n}/${cap} especializados; ${p.general} flexibles"><span>${t}</span><b>${n} / ${cap}${p.general?' + flex':''}</b></button>`;
+      }).join('');
+      return `<article class="dispatch-zone ${item&&item.zone===z?'zone-focus':''}"><div class="dispatch-zone-top"><strong>ZONA ${z}</strong><small>${u.total}/${total(p)}</small></div><div class="dispatch-zone-address" title="${esc(agencies[z].join(', '))}">${esc(agencies[z].join(' · '))}</div>${shared}<div class="dispatch-meter"><span style="width:${Math.min(100,pct)}%"></span></div><div class="dispatch-lanes">${slots}</div><div class="dispatch-zone-usage">${Math.max(0,total(p)-u.total)} libre(s) en grupo</div></article>`;
+    }).join('');
+  }
+  function selectQueue(id){const q=state.queue.find(item=>item.id===id);if(!q)return;state.selectedQueue=state.selectedQueue===id?null:id;renderDispatch()}
+  function assignQueued(id,z,type){
+    const q=state.queue.find(item=>item.id===id);if(!q){notify('Ese SSDD ya no está pendiente','error');return false}
+    z=Number(z);if(z!==Number(q.zone)){notify(`El SSDD ${q.ssdd} pertenece a Zona TOA ${q.zone}, no a Zona ${z}.`,'error');return false}
+    if(!['PEXT','HAB'].includes(type)){notify('Selecciona PEXT o HAB','error');return false}
+    const p=poolFor(z);if(!p||!hasSlot(p,state.day,type)){notify('No hay cupos '+type+' disponibles en '+poolLabel(p),'error');return false}
+    const r=normalizeRecord({ssdd:q.ssdd,rol:q.rol,date:state.day,zone:q.zone,agency:'',type,owner:'Por definir',priority:'Normal',status:'Asignado',note:'Asignado desde bandeja de SSDD; responsable por definir.',source:'bandeja'});
+    const error=validateRecord(r);if(error){notify(error,'error');return false}
+    state.records.push(r);state.queue=state.queue.filter(x=>x.id!==id);state.selectedQueue=null;
+    safeStore();renderAll();notify(`SSDD ${q.ssdd} asignado a Zona ${z} / ${type} · ${getUse(p.id,state.day).total}/${total(p)} cupos del grupo`);return true;
+  }
+  function returnToQueue(id){const r=state.records.find(x=>x.id===id);if(!r||r.source!=='bandeja')return;
+    if(!state.queue.some(q=>normalize(q.ssdd)===normalize(r.ssdd)))state.queue.unshift({id:'Q-'+newId(),ssdd:r.ssdd,rol:r.rol||'Sin ROL',zone:Number(r.zone),importedAt:new Date().toISOString()});
+    state.records=state.records.filter(x=>x.id!==id);if(state.editing===id)resetForm();safeStore();renderAll();notify('SSDD '+r.ssdd+' devuelto a la bandeja de pendientes');
+  }
+  function wireQueueDrag(){
+    let dragging=null,touchStart=null,ghost=null,hot=null;
+    function clearHot(){if(hot)hot.classList.remove('is-hot');hot=null}
+    function canDrop(el,id){const q=state.queue.find(x=>x.id===id);return !!(el&&q&&q.zone===Number(el.dataset.dropZone)&&hasSlot(poolFor(q.zone),state.day,el.dataset.dropType))}
+    function findDrop(x,y){const el=document.elementFromPoint(x,y);return el?.closest('[data-drop-zone]')||null}
+    document.addEventListener('click',e=>{const card=e.target.closest('[data-queue-id]');if(card){selectQueue(card.dataset.queueId);return}const slot=e.target.closest('[data-drop-zone]');if(slot){if(state.selectedQueue)assignQueued(state.selectedQueue,slot.dataset.dropZone,slot.dataset.dropType);else notify('Selecciona primero un SSDD de la bandeja.','error');return}if(e.target.closest('#clearQueueSelection')){state.selectedQueue=null;renderDispatch()}});
+    document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-queue-id]')){e.preventDefault();selectQueue(e.target.dataset.queueId)}});
+    document.addEventListener('dragstart',e=>{const card=e.target.closest('[data-queue-id]');if(!card)return;dragging=card.dataset.queueId;state.selectedQueue=dragging;e.dataTransfer.setData('text/plain',dragging);e.dataTransfer.effectAllowed='move';card.classList.add('is-selected');document.querySelectorAll('[data-drop-zone]').forEach(el=>{if(canDrop(el,dragging))el.classList.add('is-eligible')})});
+    document.addEventListener('dragover',e=>{const slot=e.target.closest('[data-drop-zone]');if(!slot||!dragging)return;e.preventDefault();clearHot();if(canDrop(slot,dragging)){slot.classList.add('is-hot');hot=slot;e.dataTransfer.dropEffect='move'}else e.dataTransfer.dropEffect='none'});
+    document.addEventListener('dragleave',e=>{if(hot&&e.target===hot)clearHot()});
+    document.addEventListener('drop',e=>{const slot=e.target.closest('[data-drop-zone]');if(!slot||!dragging)return;e.preventDefault();const id=dragging;dragging=null;clearHot();assignQueued(id,slot.dataset.dropZone,slot.dataset.dropType)});
+    document.addEventListener('dragend',()=>{dragging=null;clearHot();renderDispatch()});
+    // Pointer Events: arrastre táctil, con alternativa de seleccionar y tocar en cualquier móvil.
+    document.addEventListener('pointerdown',e=>{if(e.pointerType!=='touch'&&e.pointerType!=='pen')return;const card=e.target.closest('[data-queue-id]');if(!card)return;touchStart={id:card.dataset.queueId,x:e.clientX,y:e.clientY,pointerId:e.pointerId,moved:false};try{card.setPointerCapture(e.pointerId)}catch(_){}});
+    document.addEventListener('pointermove',e=>{if(!touchStart||e.pointerId!==touchStart.pointerId)return;const move=Math.hypot(e.clientX-touchStart.x,e.clientY-touchStart.y);if(move<9&&!touchStart.moved)return;
+      touchStart.moved=true;if(!ghost){ghost=document.createElement('div');ghost.className='touch-drag-ghost';ghost.textContent='SSDD '+(state.queue.find(q=>q.id===touchStart.id)?.ssdd||'');document.body.appendChild(ghost)}
+      ghost.style.left=e.clientX+'px';ghost.style.top=e.clientY+'px';clearHot();const slot=findDrop(e.clientX,e.clientY);if(canDrop(slot,touchStart.id)){slot.classList.add('is-hot');hot=slot}
+      if(e.cancelable)e.preventDefault();
+    },{passive:false});
+    document.addEventListener('pointerup',e=>{if(!touchStart||e.pointerId!==touchStart.pointerId)return;const info=touchStart;touchStart=null;if(ghost){ghost.remove();ghost=null}clearHot();if(info.moved){const slot=findDrop(e.clientX,e.clientY);if(slot)assignQueued(info.id,slot.dataset.dropZone,slot.dataset.dropType);else {state.selectedQueue=info.id;renderDispatch()} }});
+    document.addEventListener('pointercancel',()=>{touchStart=null;if(ghost){ghost.remove();ghost=null}clearHot()});
+  }
   function importRows(rows){let imported=0,duplicates=0,capacity=0,invalid=0;const errors=[];
-    rows.forEach((row,idx)=>{const raw={ssdd:getValue(row,'ssdd'),date:parseDate(getValue(row,'date')),agency:getValue(row,'agency'),type:normalize(getValue(row,'type')),owner:getValue(row,'owner'),priority:getValue(row,'priority')||'Normal',status:getValue(row,'status')||'Asignado',note:getValue(row,'note')};
+    rows.forEach((row,idx)=>{const raw={ssdd:getValue(row,'ssdd'),rol:getValue(row,'rol'),zone:parseZoneToa(getValue(row,'zone')),date:parseDate(getValue(row,'date')),agency:getValue(row,'agency'),type:normalize(getValue(row,'type')),owner:getValue(row,'owner'),priority:getValue(row,'priority')||'Normal',status:getValue(row,'status')||'Asignado',note:getValue(row,'note')};
       let zone=zoneFor(raw.agency);if(zone)raw.agency=agencies[zone].find(a=>normalize(a)===normalize(raw.agency));
       let st=normalize(raw.status);raw.status=({'ASIGNADO':'Asignado','PENDIENTE':'Pendiente','EN EJECUCION':'En ejecución','EXITOSO':'Exitoso','REPROGRAMADO':'Reprogramado','CANCELADO':'Cancelado'})[st]||'Asignado';
       if(!raw.ssdd||!raw.date||!raw.agency||!raw.owner||!['PEXT','HAB'].includes(raw.type)){invalid++;if(errors.length<3)errors.push('Fila '+(idx+2)+': faltan datos, agencia o tipo inválido');return}
@@ -296,15 +432,15 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
   async function handleImport(e){const f=e.target.files?.[0];if(!f)return;try{const rows=await sheetRows(f);if(!rows.length){notify('El archivo no contiene registros.','error');return}importRows(rows)}catch(err){notify(err.message||'No se pudo leer el archivo.','error')}finally{e.target.value=''}}
   async function restoreBackup(e){const f=e.target.files?.[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data.records)||!Array.isArray(data.pools)||data.pools.length!==defaultPools.length)throw Error('JSON de respaldo inválido');
     const pools=defaultPools.map(d=>{const p=data.pools.find(x=>x.id===d.id);if(!p)throw Error('Falta una configuración de capacidad');return {...d,pext:positive(p.pext,d.pext),hab:positive(p.hab,d.hab),general:positive(p.general,d.general)}});
-    const records=data.records.map(r=>{if(!r||!r.id||!r.ssdd||!validISO(r.date)||!zoneFor(r.agency)||!['PEXT','HAB'].includes(r.type)||!r.owner)throw Error('El respaldo contiene asignaciones inválidas');return {...r,zone:zoneFor(r.agency)}});
+    const records=data.records.map(r=>{if(!r||!r.id||!r.ssdd||!validISO(r.date)||!((r.agency&&zoneFor(r.agency))||validZone(r.zone))||!['PEXT','HAB'].includes(r.type)||!r.owner)throw Error('El respaldo contiene asignaciones inválidas');return {...r,zone:zoneFor(r.agency)||Number(r.zone)}});
     if(!confirm('¿Restaurar '+records.length+' asignaciones? Se reemplazarán los datos y cupos guardados actualmente.'))return;
-    state.records=records;state.pools=pools;state.editing=null;safeStore();resetForm();renderAll();notify('Respaldo restaurado correctamente')
+    state.records=records;state.pools=pools;state.queue=Array.isArray(data.queue)?data.queue.filter(q=>q&&q.id&&q.ssdd&&validZone(q.zone)).map(q=>({...q,zone:Number(q.zone)})):[];state.selectedQueue=null;state.editing=null;safeStore();resetForm();renderAll();notify('Respaldo restaurado correctamente')
   }catch(err){notify(err.message||'No se pudo restaurar el respaldo.','error')}finally{e.target.value=''}}
-  function wire(){setOptions();$('dayInput').value=state.day;$('formDate').value=state.day;
+  function wire(){setOptions();$('dayInput').value=state.day;$('formDate').value=state.day;$('formZoneInput').innerHTML='<option value="">Selecciona zona</option>'+Object.keys(agencies).map(z=>`<option value="${z}">Zona ${z}</option>`).join('');$('queueZoneFilter').innerHTML='<option value="">Todas las zonas</option>'+Object.keys(agencies).map(z=>`<option value="${z}">Zona ${z}</option>`).join('');
     document.querySelectorAll('.navbtn').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
     $('dayInput').addEventListener('change',e=>{if(!e.target.value)return;state.day=e.target.value;if(!state.editing)$('formDate').value=state.day;renderAll()});
     $('topNew').addEventListener('click',gotoNewCase);$('heroNew').addEventListener('click',gotoNewCase);$('mobileNew').addEventListener('click',gotoNewCase);$('heroCapacity').addEventListener('click',()=>showView('capacidad'));
-    $('gotoAgenda').addEventListener('click',()=>showView('agenda'));
+    $('gotoAgenda').addEventListener('click',()=>showView('agenda'));$('heroDispatch').addEventListener('click',()=>{showView('agenda');$('dispatchBoard').scrollIntoView({behavior:'smooth',block:'start'})});
     $('prevDay').addEventListener('click',()=>changeDate(-1));$('nextDay').addEventListener('click',()=>changeDate(1));
     $('modeTable').addEventListener('click',()=>setAgendaMode('table'));$('modeCards').addEventListener('click',()=>setAgendaMode('cards'));
     $('zoneSort').addEventListener('change',e=>{state.zoneSort=e.target.value;renderSummary()});
@@ -313,10 +449,10 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
     $('goTopForm').addEventListener('click',()=>{resetForm();$('ssdd').focus();$('assignmentFormCard').scrollIntoView({behavior:'smooth'})});
     $('clearForm').addEventListener('click',resetForm);
     $('assignmentForm').addEventListener('submit',onSubmit);
-    ['formAgency','formDate','formType'].forEach(k=>$(k).addEventListener('change',renderCapacityHint));
+    $('formAgency').addEventListener('change',()=>{const z=zoneFor($('formAgency').value);if(z)$('formZoneInput').value=String(z);renderCapacityHint()});['formZoneInput','formDate','formType'].forEach(k=>$(k).addEventListener('change',renderCapacityHint));
     [['agendaSearch','search'],['agendaZoneFilter','zone'],['agendaTypeFilter','type'],['agendaStatusFilter','status']].forEach(([id,k])=>$(id).addEventListener(id==='agendaSearch'?'input':'change',e=>{state.agendaFilters[k]=e.target.value;if(k==='zone')state.agendaFilters.pool='';renderAgenda()}));
     [['historySearch','search'],['historyFrom','from'],['historyTo','to'],['historyStatus','status']].forEach(([id,k])=>$(id).addEventListener(id==='historySearch'?'input':'change',e=>{state.historyFilters[k]=e.target.value;renderHistory()}));
-    document.addEventListener('click',e=>{const edit=e.target.closest('button[data-edit]'),del=e.target.closest('button[data-delete]'),save=e.target.closest('button[data-savepool]'),group=e.target.closest('[data-opengroup]'),jump=e.target.closest('[data-jumpdate]');if(edit)editCase(edit.dataset.edit);if(del)deleteCase(del.dataset.delete);if(save)savePool(save.dataset.savepool);if(group)openGroup(group.dataset.opengroup);if(jump){state.day=jump.dataset.jumpdate;$('dayInput').value=state.day;if(!state.editing)$('formDate').value=state.day;renderAll();showView('agenda')}if(e.target.closest('#clearGroupFilter')){state.agendaFilters.pool='';renderAgenda()}});
+    document.addEventListener('click',e=>{const edit=e.target.closest('button[data-edit]'),ret=e.target.closest('button[data-return]'),del=e.target.closest('button[data-delete]'),save=e.target.closest('button[data-savepool]'),group=e.target.closest('[data-opengroup]'),jump=e.target.closest('[data-jumpdate]');if(edit)editCase(edit.dataset.edit);if(ret)returnToQueue(ret.dataset.return);if(del)deleteCase(del.dataset.delete);if(save)savePool(save.dataset.savepool);if(group)openGroup(group.dataset.opengroup);if(jump){state.day=jump.dataset.jumpdate;$('dayInput').value=state.day;if(!state.editing)$('formDate').value=state.day;renderAll();showView('agenda')}if(e.target.closest('#clearGroupFilter')){state.agendaFilters.pool='';renderAgenda()}});
     document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-opengroup],[data-jumpdate]')){e.preventDefault();e.target.click()}});
     $('resetCapacity').addEventListener('click',()=>{if(!confirm('¿Restaurar los cupos originales de las imágenes?'))return;const old=state.pools;state.pools=structuredClone(defaultPools);const conflict=state.records.filter(r=>counted(r.status)).some(r=>!getUse(poolFor(r.zone).id,r.date).ok);if(conflict){state.pools=old;notify('No se puede restaurar: existen asignaciones que exceden la capacidad original.','error');return}safeStore();renderAll();notify('Capacity original restaurada')});
     $('exportDay').addEventListener('click',()=>exportCSV(allDate(state.day),'agenda_'+state.day+'.csv'));
@@ -324,12 +460,12 @@ body.dark .topbar{background:#172235;border-color:#273650}body.dark .card,body.d
     $('exportAll').addEventListener('click',()=>exportCSV(state.records,'agenda_completa.csv'));
     $('exportBackup').addEventListener('click',backup);
     $('downloadTemplate').addEventListener('click',()=>download('\uFEFF"SSDD";"FECHA";"AGENCIA";"TIPO";"RESPONSABLE";"PRIORIDAD";"ESTADO";"OBSERVACIONES"\r\n"12345678";"'+state.day+'";"ARICA";"HAB";"Cuadrilla 1";"Normal";"Asignado";""\r\n','plantilla_agenda_capacity.csv','text/csv;charset=utf-8'));
-    $('importSpreadsheet').addEventListener('change',handleImport);$('importBackup').addEventListener('change',restoreBackup);
+    $('queueFile').addEventListener('change',handleQueueImport);$('queueSearch').addEventListener('input',e=>{state.queueSearch=e.target.value;renderQueue()});$('queueZoneFilter').addEventListener('change',e=>{state.queueZone=e.target.value;renderQueue()});$('queueClear').addEventListener('click',()=>{if(!state.queue.length)return;if(!confirm('¿Quitar '+state.queue.length+' trabajos pendientes de esta bandeja? No modifica las asignaciones guardadas.'))return;state.queue=[];state.selectedQueue=null;safeStore();renderDispatch();notify('Bandeja vaciada')});$('queueExport').addEventListener('click',exportPending);$('queueTemplate').addEventListener('click',downloadQueueTemplate);wireQueueDrag();$('importSpreadsheet').addEventListener('change',handleImport);$('importBackup').addEventListener('change',restoreBackup);
     renderAll();resetForm();
   }
   wire();
   // Exponer controles mínimos para pruebas de funcionamiento sin modificar la interfaz.
-  window.AgendaCapacityTest={zoneFor,poolFor,hasSlot,getUse,validateRecord,parseCSV,parseDate,getState:()=>state};
+  window.AgendaCapacityTest={zoneFor,poolFor,hasSlot,getUse,validateRecord,parseCSV,parseDate,parseZoneToa,importQueueRows,assignQueued,returnToQueue,getState:()=>state};
 })();
 </script>
 </body>
