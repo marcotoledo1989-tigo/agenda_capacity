@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: agenda-capacity-360
+    runtime: static
+    staticPublishPath: .
